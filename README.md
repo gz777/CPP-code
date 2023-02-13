@@ -1,2 +1,2 @@
 # CPP-code
-Collection of class demo code written in C++ (I, II)
+Collection of class demo code written for C++ Programming Language (I, II)
