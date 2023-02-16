@@ -27,14 +27,14 @@ class SS{
     }
     
     bool testSS() {
-        for (int i = 0; i<size; i++) {
-            if(ss[i][i] != ss[size-i-1][size-i-1]) //diagonal symmetry
-                   return false;
-            for (int j = i+1; j<size; j++) {
+        for (int i = 0; i<size-1; i++) { // size-1 because we don't need to compare the last element: ss[size-1][size-1]
+            if( i < size/2 && ss[i][i] != ss[size-i-1][size-i-1]) //diagonal line symmetry.
+                return false;
+            for (int j = i+1; j<size; j++) { //no duplicate comparisons
                 if (ss[i][j] != ss[j][i] )
                     return false;
             }
-        }
+        } 
         return true;
     }
     
