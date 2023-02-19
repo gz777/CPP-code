@@ -3,7 +3,9 @@ Sator Square
 Description: The program varifies if the 2d array is a sator square or not
 Requirements: Using OOP programming paradigm. Language: C++. SS size >=2
 gz 2/15/23 All rights reserved.
+Code can be directly run via: https://onlinegdb.com/ognei5uQ9
 See more on Sator Square: https://en.wikipedia.org/wiki/Sator_Square
+Updated algorithm 2/19/23
 *******************************************************************************/
 
 #include <iostream>
@@ -27,11 +29,9 @@ class SS{
     }
     
     bool testSS() {
-        for (int i = 0; i<size-1; i++) { // size-1 because we don't need to compare the last element: ss[size-1][size-1]
-            if( i < size/2 && ss[i][i] != ss[size-i-1][size-i-1]) //diagonal line symmetry.
-                return false;
-            for (int j = i+1; j<size; j++) { //no duplicate comparisons
-                if (ss[i][j] != ss[j][i] )
+        for (int i = 0; i<size/2; i++) {//size/2: we only need to do symmetric comparisons 
+            for (int j = i; j<size; j++) { //j=i: no duplicate comparisons
+                if (ss[i][j] != ss[size-i-1][size-j-1]) //upper right to lower left diagonal line symmetry.
                     return false;
             }
         } 
@@ -55,7 +55,7 @@ int main()
     char t3[2][MAXSIZE] = { {'a','b'}, {'b','a'}};
     
         
-    SS test1(3,t1); //Do NOT declare two or more objects on the same line due to C++ quirkness on 2d array.
+    SS test1(3,t1); //Do NOT declare two or more objects on the same line, comma separated, due to C++ quirkness/potential bugs on 2d array assignments.
     cout << "test1: " << test1.testSS() << endl;
  
     SS test2(4, t2);
